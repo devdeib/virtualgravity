@@ -36,28 +36,58 @@ function TagIcon() {
   );
 }
 
+function ArrowUR() {
+  return (
+    <span className="ic" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M7 17 17 7" />
+        <path d="M7 7h10v10" />
+      </svg>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <>
       {/* NAV */}
-      <header className="nav">
-        <a className="logo" href="#hero">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://framerusercontent.com/images/bAfw2IYj1tWmsuxIkh9mzKcTs.svg"
-            alt="Virtual Gravity"
-          />
-        </a>
-        <nav className="nav-links">
-          <a href="#hero">Home</a>
-          <a href="#services">Services</a>
-          <a href="#process">How It Works</a>
-          <a href="#contact">Contact</a>
-          <a href="#contact">Join Us</a>
-        </nav>
-        <div className="nav-burger" id="burger">
-          <span></span>
-          <span></span>
+      <header className="nav" id="nav">
+        <div className="nav-inner">
+          <a className="logo" href="#hero">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://framerusercontent.com/images/bAfw2IYj1tWmsuxIkh9mzKcTs.svg"
+              alt="Virtual Gravity"
+            />
+          </a>
+          <nav className="nav-links">
+            <a href="#hero" className="active">
+              Home
+            </a>
+            <a href="#services">Services</a>
+            <a href="#process">How It Works</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a className="nav-cta" href="#contact">
+            Join Us
+            <ArrowUR />
+          </a>
+          <button
+            className="nav-burger"
+            id="burger"
+            type="button"
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </header>
       <div className="mobile-menu" id="mobileMenu">
@@ -93,6 +123,7 @@ export default function Home() {
           <div className="hero-buttons">
             <a className="btn" href="#contact">
               Get Started Now
+              <ArrowUR />
             </a>
             <a className="btn ghost" href="tel:+963980490761">
               Call Us
@@ -160,9 +191,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="proj-cta">
+        <div className="proj-cta" data-reveal>
           <a className="btn" href="#contact">
             Get Started Now
+            <ArrowUR />
           </a>
         </div>
       </section>
@@ -171,13 +203,13 @@ export default function Home() {
       <section className="sec about" id="about">
         <div className="sec-inner about-grid">
           <div className="about-info">
-            <h2 className="h2">Inside Virtual Gravity</h2>
-            <p className="lead">
+            <h2 className="h2" data-reveal>Inside Virtual Gravity</h2>
+            <p className="lead" data-reveal>
               A multidisciplinary team driven by technology, efficiency and
               results. We build solutions that help businesses launch faster and
               scale smarter.
             </p>
-            <div className="pills">
+            <div className="pills" data-reveal>
               <div className="pill">
                 <p>Full-Stack Development</p>
               </div>
@@ -196,18 +228,18 @@ export default function Home() {
             </div>
             <div className="divider"></div>
             <div className="exp-grid">
-              <div className="exp">
+              <div className="exp" data-reveal>
                 <p>Quality You Can Measure</p>
               </div>
-              <div className="exp">
+              <div className="exp" data-reveal>
                 <p>Solutions That Last</p>
               </div>
-              <div className="exp">
+              <div className="exp" data-reveal>
                 <p>A Team You Can Trust</p>
               </div>
             </div>
           </div>
-          <div className="about-img">
+          <div className="about-img" data-reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://framerusercontent.com/images/kS0nBwB7pKnWC3vlQzLBRwPVKYA.jpg"
@@ -220,7 +252,7 @@ export default function Home() {
       {/* PROCESS */}
       <section className="sec process" id="process">
         <div className="sec-inner process-grid">
-          <div className="process-img">
+          <div className="process-img" data-reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://framerusercontent.com/images/djbcRHCD89IflJ1okJAa1J65cuM.png"
@@ -228,14 +260,14 @@ export default function Home() {
             />
           </div>
           <div className="process-right">
-            <div className="eyebrow">
+            <div className="eyebrow" data-reveal>
               <span className="dot">
                 <i></i>
               </span>
               <span>Design process</span>
             </div>
-            <h2 className="h2">Process</h2>
-            <p className="lead">
+            <h2 className="h2" data-reveal>Process</h2>
+            <p className="lead" data-reveal>
               crafting bold visuals that inspire and elevate brands with thought
               process.
             </p>
@@ -243,7 +275,7 @@ export default function Home() {
               Get Started
             </a>
             <div className="steps">
-              <div className="step">
+              <div className="step" data-reveal>
                 <svg
                   className="icon"
                   viewBox="0 0 24 24"
@@ -270,7 +302,7 @@ export default function Home() {
                   <p>1</p>
                 </div>
               </div>
-              <div className="step">
+              <div className="step" data-reveal>
                 <svg
                   className="icon"
                   viewBox="0 0 24 24"
@@ -297,7 +329,7 @@ export default function Home() {
                   <p>2</p>
                 </div>
               </div>
-              <div className="step">
+              <div className="step" data-reveal>
                 <svg
                   className="icon"
                   viewBox="0 0 24 24"
@@ -334,18 +366,18 @@ export default function Home() {
         <div className="sec-inner">
           <div className="services-top">
             <div className="services-left">
-              <div className="eyebrow">
+              <div className="eyebrow" data-reveal>
                 <span className="dot">
                   <i></i>
                 </span>
                 <span>Our Services</span>
               </div>
-              <h2 className="h2">Services</h2>
-              <p className="lead">
+              <h2 className="h2" data-reveal>Services</h2>
+              <p className="lead" data-reveal>
                 From sleek websites to smart AI solutions, we deliver tech-driven
                 services that help businesses grow faster and smarter.
               </p>
-              <div className="pills">
+              <div className="pills" data-reveal>
                 <div className="pill">
                   <p>Web Development</p>
                 </div>
@@ -371,7 +403,7 @@ export default function Home() {
                 Get Started Now
               </a>
             </div>
-            <div className="services-hero-img">
+            <div className="services-hero-img" data-reveal>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://framerusercontent.com/images/4PkmsorrStxIRIPmuHvP9uRFx0.png"
@@ -382,7 +414,7 @@ export default function Home() {
 
           <div className="bento">
             <div className="bento-col">
-              <div className="card">
+              <div className="card" data-reveal>
                 <div className="top">
                   <svg
                     className="icon"
@@ -406,7 +438,7 @@ export default function Home() {
                   performance and impact
                 </p>
               </div>
-              <div className="card">
+              <div className="card" data-reveal>
                 <div className="top">
                   <svg
                     className="icon"
@@ -427,7 +459,7 @@ export default function Home() {
                   visibility, engage audiences, and drive real business growth
                 </p>
               </div>
-              <div className="card">
+              <div className="card" data-reveal>
                 <div className="top">
                   <svg
                     className="icon"
@@ -452,7 +484,7 @@ export default function Home() {
               </div>
             </div>
             <div className="bento-col">
-              <div className="card">
+              <div className="card" data-reveal>
                 <div className="top">
                   <svg
                     className="icon"
@@ -475,7 +507,7 @@ export default function Home() {
                   devices
                 </p>
               </div>
-              <div className="card">
+              <div className="card" data-reveal>
                 <div className="top">
                   <svg
                     className="icon"
@@ -499,7 +531,7 @@ export default function Home() {
                   building a strong presence that connects with your audience
                 </p>
               </div>
-              <div className="card">
+              <div className="card" data-reveal>
                 <div className="top">
                   <svg
                     className="icon"
@@ -524,7 +556,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="marquees">
+          <div className="marquees" data-reveal>
             <div className="marquee a">
               {[...MARQUEE_A, ...MARQUEE_A].map((t, i) => (
                 <div className="tag" key={i}>
@@ -555,7 +587,7 @@ export default function Home() {
             Curious about what we can create together? Let&apos;s bring something
             extraordinary to life!
           </h3>
-          <div className="footer-cta">
+          <div className="footer-cta" data-reveal>
             <a className="btn" href="#contact">
               Get Started
             </a>
