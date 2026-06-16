@@ -17,9 +17,7 @@ export default function Enhancers() {
       burger?.classList.remove("active");
     };
     burger?.addEventListener("click", toggle);
-    menu
-      ?.querySelectorAll("a")
-      .forEach((a) => a.addEventListener("click", close));
+    menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
 
     // Nav condense on scroll
     const onNav = () => nav?.classList.toggle("scrolled", window.scrollY > 24);
@@ -50,13 +48,15 @@ export default function Enhancers() {
     );
     revealEls.forEach((el) => io.observe(el));
 
-    // Scroll-spy: highlight active nav link
+    // Scroll-spy: highlight active nav link (supports "#id" and "/#id")
     const navLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>(".nav-links a")
     );
     const idToLink = new Map<string, HTMLAnchorElement>();
     navLinks.forEach((a) => {
-      const id = a.getAttribute("href")?.replace("#", "");
+      const href = a.getAttribute("href") || "";
+      if (!href.includes("#")) return;
+      const id = href.split("#").pop();
       if (id) idToLink.set(id, a);
     });
     const spyTargets = Array.from(idToLink.keys())
@@ -72,32 +72,11 @@ export default function Enhancers() {
       },
       { threshold: 0, rootMargin: "-45% 0px -50% 0px" }
     );
-    spyTargets.forEach((t) => spy.observe(t));
-
-    // Projects parallax
-    const cols = Array.from(
-      document.querySelectorAll<HTMLElement>(".proj-col[data-speed]")
-    );
-    const section = document.querySelector<HTMLElement>(".projects");
-    const onScroll = () => {
-      if (!section) return;
-      const r = section.getBoundingClientRect();
-      const prog = window.innerHeight - r.top;
-      cols.forEach((c) => {
-        const s = parseFloat(c.getAttribute("data-speed") || "0");
-        const base = c.classList.contains("mid") ? "scale(1.06) " : "";
-        c.style.transform = base + `translateY(${prog * s * -0.18}px)`;
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    onScroll();
+    spyTargets.forEach((tg) => spy.observe(tg));
 
     return () => {
       burger?.removeEventListener("click", toggle);
       window.removeEventListener("scroll", onNav);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
       io.disconnect();
       spy.disconnect();
     };

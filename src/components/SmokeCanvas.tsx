@@ -35,7 +35,7 @@ export default function SmokeCanvas() {
       float rim=(rimA+rimB)*rimMask;
       float halo=(smoothstep(.3,.39,n2)*smoothstep(.46,.39,n2)+smoothstep(.64,.71,n2)*smoothstep(.78,.71,n2))*rimMask;
       float d=purple*(1.-channel*.92);
-      vec3 col=vec3(0.012,0.006,0.03);
+      vec3 col=vec3(0.0,0.0,0.0);
       col=mix(col, vec3(0.082,0.04,0.20), smoothstep(.08,.35,d));
       col=mix(col, vec3(0.208,0.102,0.447), smoothstep(.3,.62,d));
       col=mix(col, vec3(0.243,0.102,0.588), smoothstep(.6,.85,d));
