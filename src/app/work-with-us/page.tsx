@@ -4,7 +4,6 @@ import { useState } from "react";
 import SmokeCanvas from "@/components/SmokeCanvas";
 import Enhancers from "@/components/Enhancers";
 import SiteNav from "@/components/SiteNav";
-import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/components/LanguageProvider";
 
 export default function WorkWithUs() {
@@ -46,7 +45,7 @@ export default function WorkWithUs() {
 
       <section className="hero workhero" id="work">
         <div className="hero-bg">
-          <SmokeCanvas />
+          <SmokeCanvas tint={{ r: 0.443, g: 0.208, b: 0.898 }} />
         </div>
         <div className="grain"></div>
         <div className="hero-overlay"></div>
@@ -109,7 +108,6 @@ export default function WorkWithUs() {
         </div>
       </section>
 
-      <SiteFooter />
       <Enhancers />
     </>
   );

@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-export default function SmokeCanvas() {
+type Tint = { r: number; g: number; b: number };
+
+const DEFAULT_TINT: Tint = { r: 0.329, g: 0.086, b: 1.0 }; // #5416FF — home page
+
+export default function SmokeCanvas({ tint = DEFAULT_TINT }: { tint?: Tint }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -13,7 +17,7 @@ export default function SmokeCanvas() {
     const vs = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
     const fs = `
     precision highp float;
-    uniform vec2 u_res; uniform float u_t;
+    uniform vec2 u_res; uniform float u_t; uniform vec3 u_tint;
     mat2 rot(float a){ float c=cos(a), s=sin(a); return mat2(c,-s,s,c); }
     float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453123); }
     float noise(vec2 p){ vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.-2.*f);
@@ -36,13 +40,13 @@ export default function SmokeCanvas() {
       float halo=(smoothstep(.3,.39,n2)*smoothstep(.46,.39,n2)+smoothstep(.64,.71,n2)*smoothstep(.78,.71,n2))*rimMask;
       float d=purple*(1.-channel*.92);
       vec3 col=vec3(0.0,0.0,0.0);
-      col=mix(col, vec3(0.082,0.04,0.20), smoothstep(.08,.35,d));
-      col=mix(col, vec3(0.208,0.102,0.447), smoothstep(.3,.62,d));
-      col=mix(col, vec3(0.243,0.102,0.588), smoothstep(.6,.85,d));
-      col=mix(col, vec3(0.31,0.098,0.859), smoothstep(.84,1.0,d));
-      col+=vec3(0.15,0.075,0.36)*halo*.5;
-      col+=vec3(0.38,0.22,0.78)*rim*.7;
-      col+=vec3(0.72,0.62,0.97)*pow(rim,2.)*.3;
+      col=mix(col, u_tint*0.125, smoothstep(.08,.35,d));
+      col=mix(col, u_tint*0.313, smoothstep(.3,.62,d));
+      col=mix(col, u_tint*0.626, smoothstep(.6,.85,d));
+      col=mix(col, u_tint*1.0, smoothstep(.84,1.0,d));
+      col+=u_tint*0.5*halo*.5;
+      col+=u_tint*0.7*rim;
+      col+=mix(u_tint,vec3(1.0),0.45)*pow(rim,2.)*.3;
       gl_FragColor=vec4(col,1.);
     }`;
 
@@ -71,6 +75,7 @@ export default function SmokeCanvas() {
 
     const uRes = gl.getUniformLocation(prog, "u_res");
     const uT = gl.getUniformLocation(prog, "u_t");
+    const uTint = gl.getUniformLocation(prog, "u_tint");
 
     function resize() {
       const c = canvas!;
@@ -90,13 +95,14 @@ export default function SmokeCanvas() {
       resize();
       gl!.uniform2f(uRes, canvas!.width, canvas!.height);
       gl!.uniform1f(uT, (performance.now() - start) / 1000);
+      gl!.uniform3f(uTint, tint.r, tint.g, tint.b);
       gl!.drawArrays(gl!.TRIANGLES, 0, 3);
       raf = requestAnimationFrame(frame);
     };
     frame();
 
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [tint]);
 
   return <canvas ref={ref} className="smoke" />;
 }

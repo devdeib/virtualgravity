@@ -178,23 +178,23 @@ img{display:block;max-width:100%}
 .tag p{font-family:'Clash Display',sans-serif;font-size:14px;letter-spacing:-.02em;color:rgba(255,255,255,.65)}
 
 /* WORK WITH US — glassy form page */
-.workhero{min-height:100vh;justify-content:flex-start;padding:190px 40px 120px}
-.work-content{position:relative;z-index:2;width:100%;max-width:1040px;display:flex;flex-direction:column;align-items:center;gap:18px}
-.work-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:72px;line-height:1.02em;color:#fff;text-align:center}
+.workhero{min-height:auto;justify-content:flex-start;padding:150px 40px 100px}
+.work-content{position:relative;z-index:2;width:100%;max-width:700px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.work-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:36px;line-height:1.12em;color:#fff;text-align:center}
 .work-title .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(10px);animation:wordIn .6s ease forwards}
-.work-sub{max-width:680px;text-align:center;margin-bottom:18px}
-.workform{width:100%;opacity:0;animation:fadeUp .8s ease 1.1s forwards;background:rgba(13,9,28,.55);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:36px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.08)}
-.workform-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.field{display:flex;flex-direction:column;gap:10px;text-align:left}
+.work-sub{max-width:560px;text-align:center;margin-bottom:10px;font-size:16px}
+.workform{width:100%;opacity:0;animation:fadeUp .8s ease 1.1s forwards;background:rgba(13,9,28,.28);backdrop-filter:blur(8px) saturate(140%);-webkit-backdrop-filter:blur(8px) saturate(140%);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.08)}
+.workform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;text-align:left}
 .field.full{grid-column:1 / -1}
-.field label{font-family:'Clash Display',sans-serif;font-size:15px;color:var(--white)}
-.field input,.field select,.field textarea{font-family:'Clash Display',sans-serif;font-size:15px;color:#fff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 16px;outline:none;transition:border-color .35s,background .35s,box-shadow .35s;width:100%}
+.field label{font-family:'Clash Display',sans-serif;font-size:13px;color:var(--white)}
+.field input,.field select,.field textarea{font-family:'Clash Display',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:10px 12px;outline:none;transition:border-color .35s,background .35s,box-shadow .35s;width:100%}
 .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.4)}
-.field textarea{resize:vertical;min-height:150px;line-height:1.5}
-.field select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:42px}
+.field textarea{resize:vertical;min-height:96px;line-height:1.5}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
 .field select option{background:#120b26;color:#fff}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(169,145,255,.6);background:rgba(255,255,255,.06);box-shadow:0 0 0 3px rgba(113,53,229,.18)}
-.work-submit{width:100%;cursor:pointer;font-family:'Clash Display',sans-serif;font-weight:500;font-size:18px;color:#1a1030;padding:16px 26px;border:0;border-radius:14px;background:linear-gradient(180deg,#cdbcff 0%,#a991ff 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 14px 30px -10px rgba(169,145,255,.5);transition:transform .4s cubic-bezier(.32,.72,0,1),box-shadow .4s,filter .4s}
+.work-submit{width:100%;cursor:pointer;font-family:'Clash Display',sans-serif;font-weight:500;font-size:15px;color:#1a1030;padding:12px 22px;border:0;border-radius:10px;background:linear-gradient(180deg,#cdbcff 0%,#a991ff 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 14px 30px -10px rgba(169,145,255,.5);transition:transform .4s cubic-bezier(.32,.72,0,1),box-shadow .4s,filter .4s}
 .work-submit:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 20px 40px -12px rgba(169,145,255,.65)}
 .work-submit:active{transform:translateY(-1px) scale(.99)}
 .work-back{margin-top:22px;font-family:'Clash Display',sans-serif;font-size:15px;color:rgba(255,255,255,.55);opacity:0;animation:fadeUp .8s ease 1.3s forwards;transition:color .35s}
@@ -264,7 +264,7 @@ img{display:block;max-width:100%}
 @media(max-width:1199px){
   .hero h1{font-size:74px}
   .h2{font-size:64px}
-  .work-title{font-size:58px}
+  .work-title{font-size:30px}
 }
 @media(max-width:809px){
   .nav{padding:12px 14px}
@@ -286,8 +286,8 @@ img{display:block;max-width:100%}
   .step h3{font-size:30px}
   .footer{padding:80px 18px 50px}
   .footer h3{font-size:30px;text-align:left}
-  .workhero{padding:130px 16px 80px}
-  .work-title{font-size:38px}
-  .workform{padding:22px}
-  .workform-grid{grid-template-columns:1fr;gap:18px}
+  .workhero{padding:120px 16px 70px}
+  .work-title{font-size:26px}
+  .workform{padding:18px}
+  .workform-grid{grid-template-columns:1fr;gap:14px}
 }
