@@ -5,6 +5,7 @@ import Enhancers from "@/components/Enhancers";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { useLang } from "@/components/LanguageProvider";
+import BrandText from "@/components/BrandText";
 
 function TagIcon() {
   return (
@@ -120,7 +121,7 @@ export default function Home() {
       <section className="sec about" id="about">
         <div className="sec-inner about-grid">
           <div className="about-info">
-            <h2 className="h2" data-reveal>{t.about.title}</h2>
+            <h2 className="h2" data-reveal><BrandText text={t.about.title} /></h2>
             <p className="lead" data-reveal>{t.about.lead}</p>
             <div className="pills" data-reveal>
               {t.about.pills.map((p, i) => (<div className="pill" key={i}><p>{p}</p></div>))}
@@ -207,7 +208,7 @@ export default function Home() {
                   {STEP_ICONS[k]}
                   <div><h3>{t.process.steps[k].title}</h3></div>
                   <div className="sdiv"></div>
-                  <p>{t.process.steps[k].desc}</p>
+                  <p><BrandText text={t.process.steps[k].desc} /></p>
                   <div className="badge"><p>{i + 1}</p></div>
                 </div>
               ))}

@@ -52,11 +52,14 @@ export default function JoinUs() {
 
         <div className="work-content">
           <h1 className="work-title">
-            {titleWords.map((w, i) => (
-              <span key={`${lang}-${i}`}>
-                <span className="w" style={{ animationDelay: `${i * 0.08}s` }}>{w}</span>{" "}
-              </span>
-            ))}
+            {titleWords.map((w, i) => {
+              const isBrand = w === "Virtual" || w === "Gravity";
+              return (
+                <span key={`${lang}-${i}`}>
+                  <span className={isBrand ? "w brand" : "w"} style={{ animationDelay: `${i * 0.08}s` }}>{w}</span>{" "}
+                </span>
+              );
+            })}
           </h1>
           <p className="sub work-sub">{t.join.sub}</p>
 

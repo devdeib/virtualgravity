@@ -251,6 +251,9 @@ img{display:block;max-width:100%}
 [dir="rtl"] p,[dir="rtl"] a,[dir="rtl"] span,[dir="rtl"] li,
 [dir="rtl"] button,[dir="rtl"] input,[dir="rtl"] select,[dir="rtl"] textarea,[dir="rtl"] label,
 [dir="rtl"] .clash,[dir="rtl"] .h2,[dir="rtl"] .lead{font-family:'IBM Plex Sans Arabic','Inter',sans-serif}
+/* Brand name always stays in Clash Display, even inside Arabic/RTL copy */
+[dir="rtl"] .brand{font-family:'Clash Display','Inter',sans-serif;unicode-bidi:embed;direction:ltr}
+[dir="rtl"] .footer-meta a{font-family:'Clash Display','Inter',sans-serif;unicode-bidi:embed;direction:ltr}
 /* RTL physical-property flips */
 [dir="rtl"] .nav .logo{margin-right:0;margin-left:auto}
 [dir="rtl"] .step,[dir="rtl"] .step p,[dir="rtl"] .field{text-align:right}
