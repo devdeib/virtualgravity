@@ -177,6 +177,17 @@ img{display:block;max-width:100%}
 .tag .icon{width:20px;height:20px;color:#fff}
 .tag p{font-family:'Clash Display',sans-serif;font-size:14px;letter-spacing:-.02em;color:rgba(255,255,255,.65)}
 
+/* ERROR PAGE — 404 / 500 / generic */
+.errorhero{min-height:100vh;padding:160px 40px 100px;justify-content:center;align-items:center;background:linear-gradient(180deg,#5114F5 0%,#5114F5 55%,#1c1c1c 100%)}
+.errorhero .hero-overlay{background:none}
+.error-code{position:absolute;left:0;right:0;bottom:6%;z-index:1;text-align:center;font-family:'Clash Display',sans-serif;font-weight:700;font-size:min(34vw,420px);line-height:1;color:rgba(150,130,230,.3);letter-spacing:-.02em;pointer-events:none;user-select:none}
+.error-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:680px}
+.error-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:42px;line-height:1.1em;color:#fff}
+.error-sub{font-family:'Clash Display',sans-serif;font-weight:600;font-size:42px;line-height:1.1em;color:#fff;margin-top:-6px}
+.error-detail{font-family:'Clash Display',sans-serif;font-weight:400;font-size:16px;line-height:1.55;color:rgba(255,255,255,.62);margin:6px 0 8px}
+.error-content .btn{background:rgba(10,5,30,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px -10px rgba(0,0,0,.5)}
+.error-content .btn:hover{background:rgba(10,5,30,.7)}
+
 /* WORK WITH US — glassy form page */
 .workhero{min-height:auto;justify-content:flex-start;padding:150px 40px 100px}
 .work-content{position:relative;z-index:2;width:100%;max-width:700px;display:flex;flex-direction:column;align-items:center;gap:14px}
@@ -290,6 +301,9 @@ img{display:block;max-width:100%}
   .footer{padding:80px 18px 50px}
   .footer h3{font-size:30px;text-align:left}
   .workhero{padding:120px 16px 70px}
+  .errorhero{padding:120px 16px 70px}
+  .error-title,.error-sub{font-size:28px}
+  .error-code{font-size:38vw;bottom:4%}
   .work-title{font-size:26px}
   .workform{padding:18px}
   .workform-grid{grid-template-columns:1fr;gap:14px}
