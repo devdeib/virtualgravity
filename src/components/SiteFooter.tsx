@@ -20,7 +20,7 @@ export default function SiteFooter() {
         </div>
         <p className="footer-apply">
           {t.footer.applyA}
-          <a href="/work-with-us">{t.footer.applyLink}</a>
+          <a href="/join-us">{t.footer.applyLink}</a>
         </p>
         <div className="social">
           <a href="https://www.facebook.com/share/1BahtBHRq7/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">

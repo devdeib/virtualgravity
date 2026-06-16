@@ -30,7 +30,7 @@ export default function SiteNav() {
             <a href="/#process">{t.nav.process}</a>
             <a href="/#contact">{t.nav.contact}</a>
           </nav>
-          <a className="nav-cta" href="/work-with-us">
+          <a className="nav-cta" href="/join-us">
             {t.nav.join}
             <ArrowUR />
           </a>
@@ -45,7 +45,7 @@ export default function SiteNav() {
         <a href="/#services">{t.nav.services}</a>
         <a href="/#process">{t.nav.process}</a>
         <a href="/#contact">{t.nav.contact}</a>
-        <a href="/work-with-us">{t.nav.join}</a>
+        <a href="/join-us">{t.nav.join}</a>
         <div className="mobile-lang">
           <button type="button" className={lang === "en" ? "on" : ""} onClick={() => setLang("en")}>EN</button>
           <button type="button" className={lang === "ar" ? "on" : ""} onClick={() => setLang("ar")}>العربية</button>

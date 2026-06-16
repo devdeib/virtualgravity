@@ -45,7 +45,7 @@ export default function JoinUs() {
 
       <section className="hero workhero" id="join">
         <div className="hero-bg">
-          <SmokeCanvas tint={{ r: 0.663, g: 0.569, b: 1.0 }} />
+          <SmokeCanvas />
         </div>
         <div className="grain"></div>
         <div className="hero-overlay"></div>
