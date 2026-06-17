@@ -23,6 +23,7 @@ export default function JoinUs() {
     note: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -31,12 +32,13 @@ export default function JoinUs() {
     e.preventDefault();
     setStatus("sending");
     try {
-      await fetch(FORM_ENDPOINT, {
+      const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({ formType: "join", ...form }),
       });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || "Unknown error");
       setStatus("success");
       setForm({
         fullName: "",
@@ -47,8 +49,9 @@ export default function JoinUs() {
         experience: t.join.experienceOptions[0],
         note: "",
       });
-    } catch {
+    } catch (err) {
       setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Unknown error");
     }
   };
 
@@ -119,7 +122,7 @@ export default function JoinUs() {
                   {status === "sending" ? "Sending..." : t.join.submit}
                 </button>
                 {status === "success" && <p className="form-status success">Thanks — we received your application and will be in touch soon.</p>}
-                {status === "error" && <p className="form-status error">Something went wrong. Please try again or email us directly.</p>}
+                {status === "error" && <p className="form-status error">Something went wrong: {errorMsg}. Please try again or email us directly.</p>}
               </div>
             </div>
           </form>
