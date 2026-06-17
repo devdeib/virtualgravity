@@ -13,12 +13,12 @@ function ArrowUR() {
   );
 }
 
-export default function SiteNav() {
+export default function SiteNav({ noShadow = false }: { noShadow?: boolean }) {
   const { lang, setLang, t } = useLang();
 
   return (
     <>
-      <header className="nav" id="nav">
+      <header className={noShadow ? "nav nav-flat" : "nav"} id="nav">
         <div className="nav-inner">
           <a className="logo" href="/#hero">
             {/* eslint-disable-next-line @next/next/no-img-element */}

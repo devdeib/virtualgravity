@@ -6,7 +6,7 @@ import SiteNav from "@/components/SiteNav";
 export default function ThankYou() {
   return (
     <>
-      <SiteNav />
+      <SiteNav noShadow />
       <section className="hero thankyouhero" id="thankyou">
         <div className="hero-bg">
           <SmokeCanvas

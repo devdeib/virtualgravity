@@ -18,7 +18,7 @@ export default function ErrorScreen({
 }) {
   return (
     <>
-      <SiteNav />
+      <SiteNav noShadow />
       <section className="hero errorhero" id="error">
         <div className="hero-bg">
           <SmokeCanvas
