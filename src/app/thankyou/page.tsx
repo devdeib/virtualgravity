@@ -12,6 +12,8 @@ export default function ThankYou() {
           <SmokeCanvas
             base={{ r: 0.318, g: 0.078, b: 0.961 }}
             tint={{ r: 0.72, g: 0.65, b: 0.85 }}
+            intensity={0.45}
+            lift={0.72}
           />
         </div>
         <div className="grain"></div>
