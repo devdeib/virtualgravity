@@ -6,6 +6,9 @@ import Enhancers from "@/components/Enhancers";
 import SiteNav from "@/components/SiteNav";
 import { useLang } from "@/components/LanguageProvider";
 
+const FORM_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbw-U8g3ReRDyUADPENfCXVkAutc3c6FrntqgmlXeCPfEKDIXUEQwwNlXziWy8K7D1hx/exec";
+
 export default function JoinUs() {
   const { lang, t } = useLang();
   const titleWords = t.join.title.split(" ");
@@ -19,24 +22,33 @@ export default function JoinUs() {
     experience: t.join.experienceOptions[0],
     note: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = [
-      `${t.join.fullName}: ${form.fullName}`,
-      `${t.join.email}: ${form.email}`,
-      `${t.join.phone}: ${form.phone}`,
-      `${t.join.location}: ${form.location}`,
-      `${t.join.role}: ${form.role}`,
-      `${t.join.experience}: ${form.experience}`,
-      `${t.join.note}: ${form.note}`,
-    ].join("\n");
-    window.location.href = `mailto:info@virtual-gravity.net?subject=${encodeURIComponent(
-      "Join Virtual Gravity"
-    )}&body=${encodeURIComponent(body)}`;
+    setStatus("sending");
+    try {
+      await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ formType: "join", ...form }),
+      });
+      setStatus("success");
+      setForm({
+        fullName: "",
+        email: "",
+        phone: "",
+        location: "",
+        role: t.join.roleOptions[0],
+        experience: t.join.experienceOptions[0],
+        note: "",
+      });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -102,7 +114,11 @@ export default function JoinUs() {
                 <textarea id="note" rows={6} value={form.note} onChange={update("note")} placeholder={t.join.notePh}></textarea>
               </div>
               <div className="field full">
-                <button type="submit" className="work-submit">{t.join.submit}</button>
+                <button type="submit" className="work-submit" disabled={status === "sending"}>
+                  {status === "sending" ? "Sending..." : t.join.submit}
+                </button>
+                {status === "success" && <p className="form-status success">Thanks — we received your application and will be in touch soon.</p>}
+                {status === "error" && <p className="form-status error">Something went wrong. Please try again or email us directly.</p>}
               </div>
             </div>
           </form>

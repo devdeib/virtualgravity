@@ -6,6 +6,9 @@ import Enhancers from "@/components/Enhancers";
 import SiteNav from "@/components/SiteNav";
 import { useLang } from "@/components/LanguageProvider";
 
+const FORM_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbw-U8g3ReRDyUADPENfCXVkAutc3c6FrntqgmlXeCPfEKDIXUEQwwNlXziWy8K7D1hx/exec";
+
 export default function WorkWithUs() {
   const { lang, t } = useLang();
   const titleWords = t.work.title.split(" ");
@@ -19,24 +22,33 @@ export default function WorkWithUs() {
     service: t.work.serviceOptions[0],
     project: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = [
-      `${t.work.fullName}: ${form.fullName}`,
-      `${t.work.email}: ${form.email}`,
-      `${t.work.phone}: ${form.phone}`,
-      `${t.work.company}: ${form.company}`,
-      `${t.work.budget}: ${form.budget}`,
-      `${t.work.service}: ${form.service}`,
-      `${t.work.project}: ${form.project}`,
-    ].join("\n");
-    window.location.href = `mailto:info@virtual-gravity.net?subject=${encodeURIComponent(
-      "Work With Virtual Gravity"
-    )}&body=${encodeURIComponent(body)}`;
+    setStatus("sending");
+    try {
+      await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ formType: "work", ...form }),
+      });
+      setStatus("success");
+      setForm({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        budget: t.work.budgetOptions[0],
+        service: t.work.serviceOptions[0],
+        project: "",
+      });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -102,7 +114,11 @@ export default function WorkWithUs() {
                 <textarea id="project" rows={6} value={form.project} onChange={update("project")} placeholder={t.work.projectPh}></textarea>
               </div>
               <div className="field full">
-                <button type="submit" className="work-submit">{t.work.submit}</button>
+                <button type="submit" className="work-submit" disabled={status === "sending"}>
+                  {status === "sending" ? "Sending..." : t.work.submit}
+                </button>
+                {status === "success" && <p className="form-status success">Thanks — we received your message and will be in touch soon.</p>}
+                {status === "error" && <p className="form-status error">Something went wrong. Please try again or email us directly.</p>}
               </div>
             </div>
           </form>
