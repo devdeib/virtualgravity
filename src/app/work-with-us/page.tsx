@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import SmokeCanvas from "@/components/SmokeCanvas";
 import Enhancers from "@/components/Enhancers";
 import SiteNav from "@/components/SiteNav";
@@ -11,6 +12,7 @@ const FORM_ENDPOINT =
 
 export default function WorkWithUs() {
   const { lang, t } = useLang();
+  const router = useRouter();
   const titleWords = t.work.title.split(" ");
 
   const [form, setForm] = useState({
@@ -39,16 +41,7 @@ export default function WorkWithUs() {
       });
       const json = await res.json();
       if (!json.ok) throw new Error(json.error || "Unknown error");
-      setStatus("success");
-      setForm({
-        fullName: "",
-        email: "",
-        phone: "",
-        company: "",
-        budget: t.work.budgetOptions[0],
-        service: t.work.serviceOptions[0],
-        project: "",
-      });
+      router.push("/thankyou");
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Unknown error");
@@ -121,7 +114,6 @@ export default function WorkWithUs() {
                 <button type="submit" className="work-submit" disabled={status === "sending"}>
                   {status === "sending" ? "Sending..." : t.work.submit}
                 </button>
-                {status === "success" && <p className="form-status success">Thanks — we received your message and will be in touch soon.</p>}
                 {status === "error" && <p className="form-status error">Something went wrong: {errorMsg}. Please try again or email us directly.</p>}
               </div>
             </div>

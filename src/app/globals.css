@@ -180,6 +180,11 @@ img{display:block;max-width:100%}
 /* ERROR PAGE — 404 / 500 / generic */
 .errorhero{min-height:100vh;padding:160px 40px 100px;justify-content:center;align-items:center;background:linear-gradient(180deg,#5114F5 0%,#5114F5 55%,#1c1c1c 100%)}
 .errorhero .hero-overlay{background:none}
+.thankyouhero{min-height:100vh;padding:40px;justify-content:center;align-items:center;background:#5114F5}
+.thankyouhero .hero-overlay{background:none}
+.thankyou-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;max-width:760px}
+.thankyou-title{font-family:'Clash Display',sans-serif;font-weight:700;font-size:64px;line-height:1.05em;color:#fff;margin:0}
+.thankyou-sub{font-family:'Clash Display',sans-serif;font-weight:400;font-size:18px;line-height:1.5;color:rgba(255,255,255,.7);margin:-14px 0 6px}
 .error-code{position:absolute;left:0;right:0;bottom:6%;z-index:1;text-align:center;font-family:'Clash Display',sans-serif;font-weight:700;font-size:min(34vw,420px);line-height:1;color:rgba(150,130,230,.3);letter-spacing:-.02em;pointer-events:none;user-select:none}
 .error-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:680px}
 .error-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:42px;line-height:1.1em;color:#fff}
@@ -308,6 +313,9 @@ img{display:block;max-width:100%}
   .errorhero{padding:120px 16px 70px}
   .error-title,.error-sub{font-size:28px}
   .error-code{font-size:38vw;bottom:4%}
+  .thankyouhero{padding:24px}
+  .thankyou-title{font-size:34px}
+  .thankyou-sub{font-size:15px}
   .work-title{font-size:26px}
   .workform{padding:18px}
   .workform-grid{grid-template-columns:1fr;gap:14px}
