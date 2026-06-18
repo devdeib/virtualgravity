@@ -74,7 +74,8 @@ export default function SiteNav({ noShadow = false }: { noShadow?: boolean }) {
           </a>
           <div className="mobile-lang">
             <button type="button" className={lang === "en" ? "on" : ""} onClick={() => setLang("en")}>EN</button>
-            <button type="button" className={lang === "ar" ? "on" : ""} onClick={() => setLang("ar")}>العربية</button>
+            <span className="sep"></span>
+            <button type="button" className={lang === "ar" ? "on" : ""} onClick={() => setLang("ar")}>AR</button>
           </div>
         </div>
       </div>
