@@ -7,17 +7,21 @@ export default function Enhancers() {
     const menu = document.getElementById("mobileMenu");
     const backdrop = document.getElementById("mobileMenuBackdrop");
     const nav = document.getElementById("nav");
+    if (menu) (menu as HTMLElement & { inert: boolean }).inert = true;
 
     // Mobile menu + burger morph
     const toggle = () => {
+      const opening = !menu?.classList.contains("open");
       menu?.classList.toggle("open");
       backdrop?.classList.toggle("open");
       burger?.classList.toggle("active");
+      if (menu) (menu as HTMLElement & { inert: boolean }).inert = !opening;
     };
     const close = () => {
       menu?.classList.remove("open");
       backdrop?.classList.remove("open");
       burger?.classList.remove("active");
+      if (menu) (menu as HTMLElement & { inert: boolean }).inert = true;
     };
     burger?.addEventListener("click", toggle);
     backdrop?.addEventListener("click", close);
