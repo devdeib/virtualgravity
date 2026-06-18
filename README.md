@@ -26,6 +26,3 @@ Open http://localhost:3000
    (`<link>` in `layout.tsx`). Download the family from fontshare.com, drop the
    `.woff2` files in `public/fonts/`, and replace the CDN link with `@font-face`
    rules in `globals.css`.
-2. **Download images.** Project/team images still load from `framerusercontent.com`.
-   Save them into `public/images/` and update the `src` paths so the site has no
-   dependency on Framer.
