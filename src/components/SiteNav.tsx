@@ -50,6 +50,7 @@ export default function SiteNav({ noShadow = false }: { noShadow?: boolean }) {
       </header>
       <div className="mobile-menu" id="mobileMenu">
         <span className="mobile-menu-glow" aria-hidden="true" />
+        <span className="mobile-menu-glow-b" aria-hidden="true" />
         <div className="mobile-menu-card">
           <a href="/#hero" className="mobile-menu-link">
             <span>{t.nav.home}</span>
