@@ -5,18 +5,22 @@ export default function Enhancers() {
   useEffect(() => {
     const burger = document.getElementById("burger");
     const menu = document.getElementById("mobileMenu");
+    const backdrop = document.getElementById("mobileMenuBackdrop");
     const nav = document.getElementById("nav");
 
     // Mobile menu + burger morph
     const toggle = () => {
       menu?.classList.toggle("open");
+      backdrop?.classList.toggle("open");
       burger?.classList.toggle("active");
     };
     const close = () => {
       menu?.classList.remove("open");
+      backdrop?.classList.remove("open");
       burger?.classList.remove("active");
     };
     burger?.addEventListener("click", toggle);
+    backdrop?.addEventListener("click", close);
     menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
 
     // Nav condense on scroll
@@ -76,6 +80,7 @@ export default function Enhancers() {
 
     return () => {
       burger?.removeEventListener("click", toggle);
+      backdrop?.removeEventListener("click", close);
       window.removeEventListener("scroll", onNav);
       io.disconnect();
       spy.disconnect();
