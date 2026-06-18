@@ -30,14 +30,14 @@ export default function SmokeCanvas({
     precision highp float;
     uniform vec2 u_res; uniform float u_t; uniform vec3 u_tint; uniform vec3 u_base; uniform float u_intensity; uniform float u_lift;
     mat2 rot(float a){ float c=cos(a), s=sin(a); return mat2(c,-s,s,c); }
-    float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453123); }
+    float hash(vec2 p){ vec3 p3=fract(vec3(p.xyx)*0.13); p3+=dot(p3,p3.yzx+3.333); return fract((p3.x+p3.y)*p3.z); }
     float noise(vec2 p){ vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.-2.*f);
       return mix(mix(hash(i),hash(i+vec2(1.,0.)),u.x), mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),u.x),u.y); }
     float fbm(vec2 p){ float v=0., a=.52; mat2 m=rot(.5);
       for(int i=0;i<5;i++){ v+=a*noise(p); p=m*p*1.95; a*=.5; } return v; }
     void main(){
       vec2 uv = gl_FragCoord.xy/u_res.xy; vec2 p=uv; p.x*=u_res.x/u_res.y;
-      float t=u_t*.02;
+      float t=mod(u_t*.02,1000.0);
       vec2 q=vec2(fbm(p*.9 + t), fbm(p*.9 + vec2(5.2,1.3) - t*.7));
       float f=fbm(p*1.0 + 2.0*q);
       float n2=fbm(p*.85 + 1.6*q + vec2(3.7,8.1) - t*.5);
