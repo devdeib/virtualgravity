@@ -133,7 +133,7 @@ export default function Home() {
           </div>
           <div className="about-img" data-reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://framerusercontent.com/images/kS0nBwB7pKnWC3vlQzLBRwPVKYA.jpg" alt="team" />
+            <img src="/images/team.jpg" alt="team" />
           </div>
         </div>
       </section>
@@ -154,7 +154,7 @@ export default function Home() {
             </div>
             <div className="services-hero-img" data-reveal>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="https://framerusercontent.com/images/4PkmsorrStxIRIPmuHvP9uRFx0.png" alt="services" />
+              <img src="/images/services.png" alt="services" />
             </div>
           </div>
 
@@ -195,7 +195,7 @@ export default function Home() {
         <div className="sec-inner process-grid">
           <div className="process-img" data-reveal>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://framerusercontent.com/images/djbcRHCD89IflJ1okJAa1J65cuM.png" alt="process" />
+            <img src="/images/process.png" alt="process" />
           </div>
           <div className="process-right">
             <div className="eyebrow" data-reveal><span className="dot"><i></i></span><span>{t.process.eyebrow}</span></div>

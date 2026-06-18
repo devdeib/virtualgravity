@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Reliable digital services focused on quality, strategy, and measurable results.",
   icons: {
-    icon: "https://framerusercontent.com/images/llzwLftB3NmZ2JJfay6GnMFknO4.svg",
+    icon: "/images/favicon.svg",
   },
   openGraph: {
     title: "Virtual Gravity",

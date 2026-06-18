@@ -22,7 +22,7 @@ export default function SiteNav({ noShadow = false }: { noShadow?: boolean }) {
         <div className="nav-inner">
           <a className="logo" href="/#hero">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://framerusercontent.com/images/bAfw2IYj1tWmsuxIkh9mzKcTs.svg" alt="Virtual Gravity" />
+            <img src="/images/logo.svg" alt="Virtual Gravity" />
           </a>
           <nav className="nav-links">
             <a href="/#hero" className="active">{t.nav.home}</a>
