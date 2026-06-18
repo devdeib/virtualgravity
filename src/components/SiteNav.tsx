@@ -13,6 +13,14 @@ function ArrowUR() {
   );
 }
 
+function ChevronR() {
+  return (
+    <svg className="mm-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
+
 export default function SiteNav({ noShadow = false }: { noShadow?: boolean }) {
   const { lang, setLang, t } = useLang();
 
@@ -41,14 +49,32 @@ export default function SiteNav({ noShadow = false }: { noShadow?: boolean }) {
         </div>
       </header>
       <div className="mobile-menu" id="mobileMenu">
-        <a href="/#hero">{t.nav.home}</a>
-        <a href="/#services">{t.nav.services}</a>
-        <a href="/#process">{t.nav.process}</a>
-        <a href="/#contact">{t.nav.contact}</a>
-        <a href="/join-us">{t.nav.join}</a>
-        <div className="mobile-lang">
-          <button type="button" className={lang === "en" ? "on" : ""} onClick={() => setLang("en")}>EN</button>
-          <button type="button" className={lang === "ar" ? "on" : ""} onClick={() => setLang("ar")}>العربية</button>
+        <span className="mobile-menu-glow" aria-hidden="true" />
+        <div className="mobile-menu-card">
+          <a href="/#hero" className="mobile-menu-link">
+            <span>{t.nav.home}</span>
+            <ChevronR />
+          </a>
+          <a href="/#services" className="mobile-menu-link">
+            <span>{t.nav.services}</span>
+            <ChevronR />
+          </a>
+          <a href="/#process" className="mobile-menu-link">
+            <span>{t.nav.process}</span>
+            <ChevronR />
+          </a>
+          <a href="/#contact" className="mobile-menu-link">
+            <span>{t.nav.contact}</span>
+            <ChevronR />
+          </a>
+          <a href="/join-us" className="mobile-menu-link mobile-menu-link--cta">
+            {t.nav.join}
+            <ArrowUR />
+          </a>
+          <div className="mobile-lang">
+            <button type="button" className={lang === "en" ? "on" : ""} onClick={() => setLang("en")}>EN</button>
+            <button type="button" className={lang === "ar" ? "on" : ""} onClick={() => setLang("ar")}>العربية</button>
+          </div>
         </div>
       </div>
     </>
