@@ -15,21 +15,6 @@ export const metadata: Metadata = {
       "Reliable digital services focused on quality, strategy, and measurable results.",
     url: "https://virtual-gravity.net/",
     type: "website",
-    images: [
-      {
-        url: "https://virtual-gravity.net/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Virtual Gravity — From digital strategy to real results.",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Virtual Gravity",
-    description:
-      "Reliable digital services focused on quality, strategy, and measurable results.",
-    images: ["https://virtual-gravity.net/images/og-image.png"],
   },
 };
 
